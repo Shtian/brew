@@ -1,0 +1,232 @@
+[
+  {
+    "category": "setup",
+    "description": "Database migration creates the brews table with correct schema",
+    "steps": [
+      "Run the SQL in scripts/migrate.sql against the Vercel Postgres instance",
+      "Verify the brews table exists",
+      "Verify columns: id (uuid), bean_name (text), grams (decimal), brew_time (integer), grind_setting (integer), comments (text nullable), created_at (timestamptz)",
+      "Verify id defaults to gen_random_uuid()",
+      "Verify created_at defaults to NOW()"
+    ],
+    "passes": false
+  },
+  {
+    "category": "ui",
+    "description": "Page renders with correct botanical parchment design",
+    "steps": [
+      "Navigate to the app",
+      "Verify the background is warm parchment (#F2EBD3)",
+      "Verify a subtle grain texture overlay is visible",
+      "Verify the heading 'Brew' is displayed in Playfair Display font",
+      "Verify body text uses Inter font",
+      "Verify a horizontal divider separates the header from the table"
+    ],
+    "passes": false
+  },
+  {
+    "category": "ui",
+    "description": "Header contains title and New Entry button",
+    "steps": [
+      "Navigate to the app",
+      "Verify 'Brew' title appears on the left of the header",
+      "Verify 'New Entry' button appears on the right of the header",
+      "Verify the button uses the accent green color (#3D5C37)"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Empty state is shown when no brews exist",
+    "steps": [
+      "Ensure the database has no rows",
+      "Navigate to the app",
+      "Verify no table rows are rendered",
+      "Verify an empty state message is visible"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Brews table displays all entries sorted newest first",
+    "steps": [
+      "Add at least two brew entries at different times",
+      "Navigate to the app",
+      "Verify the most recently created brew appears at the top of the table",
+      "Verify all entries are present"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Table displays all required columns",
+    "steps": [
+      "Add a brew entry with all fields filled",
+      "Navigate to the app",
+      "Verify the table has columns: Bean Name, Dose (g), Time, Grind, Comments, Date, and an actions column",
+      "Verify each column shows the correct data for the entry"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Brew time is displayed as mm:ss in the table",
+    "steps": [
+      "Add a brew with a brew time of 3 minutes 45 seconds",
+      "Navigate to the app",
+      "Verify the time column displays '3:45' for that entry"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Date is displayed as a readable formatted date in the table",
+    "steps": [
+      "Add a brew entry",
+      "Navigate to the app",
+      "Verify the Date column shows a human-readable date and time (e.g. 'Apr 15, 2026, 08:30 PM')",
+      "Verify it does not show a raw ISO timestamp"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "New Entry button opens the create dialog",
+    "steps": [
+      "Navigate to the app",
+      "Click the 'New Entry' button",
+      "Verify a modal dialog appears",
+      "Verify the dialog title indicates creating a new brew",
+      "Verify all form fields are empty"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Create dialog contains all required fields",
+    "steps": [
+      "Open the create dialog",
+      "Verify a 'Bean Name' text input is present",
+      "Verify a 'Dose (g)' number input is present",
+      "Verify a 'Brew Time' input with mm:ss format is present",
+      "Verify a 'Grind Setting' number input (0–50) is present",
+      "Verify a 'Comments' textarea is present",
+      "Verify a submit button is present"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Submitting the create form adds the brew to the table",
+    "steps": [
+      "Open the create dialog",
+      "Fill in Bean Name: 'Ethiopia Yirgacheffe'",
+      "Fill in Dose: '15.5'",
+      "Fill in Brew Time: '3:45'",
+      "Fill in Grind Setting: '24'",
+      "Fill in Comments: 'Tastes bright and citrusy'",
+      "Click the submit button",
+      "Verify the dialog closes",
+      "Verify the new entry appears at the top of the table with correct values"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "created_at timestamp is set automatically on insert",
+    "steps": [
+      "Create a new brew entry",
+      "Verify the Date column is populated automatically",
+      "Verify the timestamp was not a user-editable field in the form"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Edit icon per row opens the edit dialog pre-populated",
+    "steps": [
+      "Ensure at least one brew entry exists in the table",
+      "Click the pencil (edit) icon for a row",
+      "Verify the dialog opens",
+      "Verify the dialog title indicates editing",
+      "Verify each field is pre-populated with the row's current values",
+      "Verify brew time is shown as mm:ss in the input"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Submitting the edit form updates the brew in the table",
+    "steps": [
+      "Open the edit dialog for an existing brew",
+      "Change the Bean Name to a new value",
+      "Submit the form",
+      "Verify the dialog closes",
+      "Verify the table row reflects the updated Bean Name",
+      "Verify other fields remain unchanged"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Delete icon per row shows a confirmation dialog",
+    "steps": [
+      "Ensure at least one brew entry exists in the table",
+      "Click the trash (delete) icon for a row",
+      "Verify a confirmation dialog appears",
+      "Verify the dialog asks for confirmation before deleting"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Confirming delete removes the brew from the table",
+    "steps": [
+      "Click the trash icon for a row",
+      "Click the confirm/delete button in the confirmation dialog",
+      "Verify the confirmation dialog closes",
+      "Verify the deleted row no longer appears in the table"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Cancelling the delete confirmation leaves the brew unchanged",
+    "steps": [
+      "Click the trash icon for a row",
+      "Click the cancel button in the confirmation dialog",
+      "Verify the confirmation dialog closes",
+      "Verify the row is still present in the table"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Dialog closes when pressing the ESC key",
+    "steps": [
+      "Open the create dialog",
+      "Press the ESC key",
+      "Verify the dialog closes"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Dialog closes when clicking the backdrop",
+    "steps": [
+      "Open the create dialog",
+      "Click outside the dialog on the backdrop",
+      "Verify the dialog closes"
+    ],
+    "passes": false
+  },
+  {
+    "category": "functional",
+    "description": "Dialog focuses the first input field on open",
+    "steps": [
+      "Open the create dialog",
+      "Verify focus is automatically placed on the Bean Name input"
+    ],
+    "passes": false
+  }
+]
