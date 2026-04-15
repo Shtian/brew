@@ -1,4 +1,5 @@
 import { getBrews } from "@/lib/db";
+import { EditBrewButton } from "./EditBrewButton";
 import { NewEntryButton } from "./NewEntryButton";
 
 export const dynamic = "force-dynamic";
@@ -59,7 +60,9 @@ export default async function Home() {
                     <td className="py-2 pr-4">{brew.grind_setting}</td>
                     <td className="py-2 pr-4">{brew.comments ?? ""}</td>
                     <td className="py-2 pr-4">{formatDate(brew.created_at)}</td>
-                    <td className="py-2" />
+                    <td className="py-2">
+                      <EditBrewButton brew={brew} />
+                    </td>
                   </tr>
                 ))}
               </tbody>

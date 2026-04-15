@@ -152,7 +152,7 @@
       "Verify each field is pre-populated with the row's current values",
       "Verify brew time is shown as mm:ss in the input"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",

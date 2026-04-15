@@ -1,20 +1,33 @@
 "use client";
 
 import { useActionState, useEffect, useRef } from "react";
-import { createBrew } from "./actions";
+import type { Brew } from "@/lib/db";
+import { createBrew, updateBrew } from "./actions";
 
 interface BrewDialogProps {
   open: boolean;
   onClose: () => void;
+  brew?: Brew;
 }
 
-export function BrewDialog({ open, onClose }: BrewDialogProps) {
+function secondsToMmSs(totalSeconds: number): string {
+  const mins = Math.floor(totalSeconds / 60);
+  const secs = totalSeconds % 60;
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
+}
+
+export function BrewDialog({ open, onClose, brew }: BrewDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const isEditing = brew !== undefined;
 
   const [, action, pending] = useActionState(
     async (_prevState: null, formData: FormData) => {
-      await createBrew(formData);
+      if (isEditing) {
+        await updateBrew(brew.id, formData);
+      } else {
+        await createBrew(formData);
+      }
       return null;
     },
     null,
@@ -72,7 +85,7 @@ export function BrewDialog({ open, onClose }: BrewDialogProps) {
       <div className="p-6">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="font-display text-2xl font-bold text-ink">
-            New Brew Entry
+            {isEditing ? "Edit Brew Entry" : "New Brew Entry"}
           </h2>
           <button
             type="button"
@@ -96,6 +109,7 @@ export function BrewDialog({ open, onClose }: BrewDialogProps) {
               id="bean_name"
               name="bean_name"
               type="text"
+              defaultValue={brew?.bean_name ?? ""}
               className="w-full rounded border border-border bg-parchment px-3 py-2 font-body text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
@@ -111,6 +125,7 @@ export function BrewDialog({ open, onClose }: BrewDialogProps) {
               id="dose"
               name="dose"
               type="number"
+              defaultValue={brew?.grams ?? ""}
               className="w-full rounded border border-border bg-parchment px-3 py-2 font-body text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
@@ -127,6 +142,9 @@ export function BrewDialog({ open, onClose }: BrewDialogProps) {
               name="brew_time"
               type="text"
               placeholder="mm:ss"
+              defaultValue={
+                brew !== undefined ? secondsToMmSs(brew.brew_time) : ""
+              }
               className="w-full rounded border border-border bg-parchment px-3 py-2 font-body text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
@@ -144,6 +162,7 @@ export function BrewDialog({ open, onClose }: BrewDialogProps) {
               type="number"
               min={0}
               max={50}
+              defaultValue={brew?.grind_setting ?? ""}
               className="w-full rounded border border-border bg-parchment px-3 py-2 font-body text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
@@ -159,6 +178,7 @@ export function BrewDialog({ open, onClose }: BrewDialogProps) {
               id="comments"
               name="comments"
               rows={3}
+              defaultValue={brew?.comments ?? ""}
               className="w-full rounded border border-border bg-parchment px-3 py-2 font-body text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
