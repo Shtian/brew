@@ -33,7 +33,7 @@
       "Verify 'New Entry' button appears on the right of the header",
       "Verify the button uses the accent green color (#3D5C37)"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
