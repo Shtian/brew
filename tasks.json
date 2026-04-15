@@ -139,7 +139,7 @@
       "Verify the Date column is populated automatically",
       "Verify the timestamp was not a user-editable field in the form"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
