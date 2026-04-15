@@ -19,6 +19,7 @@ function secondsToMmSs(totalSeconds: number): string {
 export function BrewDialog({ open, onClose, brew }: BrewDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const firstInputRef = useRef<HTMLInputElement>(null);
   const isEditing = brew !== undefined;
 
   const [, action, pending] = useActionState(
@@ -39,6 +40,7 @@ export function BrewDialog({ open, onClose, brew }: BrewDialogProps) {
 
     if (open) {
       dialog.showModal();
+      firstInputRef.current?.focus();
     } else {
       dialog.close();
     }
@@ -106,6 +108,7 @@ export function BrewDialog({ open, onClose, brew }: BrewDialogProps) {
               Bean Name
             </label>
             <input
+              ref={firstInputRef}
               id="bean_name"
               name="bean_name"
               type="text"

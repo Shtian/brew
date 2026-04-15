@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useTransition } from "react";
 import { deleteBrew } from "./actions";
 
 interface DeleteBrewButtonProps {
@@ -9,6 +9,7 @@ interface DeleteBrewButtonProps {
 
 export function DeleteBrewButton({ id }: DeleteBrewButtonProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const [isPending, startTransition] = useTransition();
 
   const openDialog = () => {
     dialogRef.current?.showModal();
@@ -18,9 +19,11 @@ export function DeleteBrewButton({ id }: DeleteBrewButtonProps) {
     dialogRef.current?.close();
   };
 
-  const handleConfirm = async () => {
-    await deleteBrew(id);
-    closeDialog();
+  const handleConfirm = () => {
+    startTransition(async () => {
+      await deleteBrew(id);
+      closeDialog();
+    });
   };
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
@@ -84,9 +87,10 @@ export function DeleteBrewButton({ id }: DeleteBrewButtonProps) {
             <button
               type="button"
               onClick={handleConfirm}
-              className="rounded bg-red-700 px-4 py-2 font-body text-sm font-medium text-parchment hover:bg-red-800"
+              disabled={isPending}
+              className="rounded bg-red-700 px-4 py-2 font-body text-sm font-medium text-parchment hover:bg-red-800 disabled:opacity-50"
             >
-              Delete
+              {isPending ? "Deleting…" : "Delete"}
             </button>
           </div>
         </div>
