@@ -23,10 +23,27 @@ export default async function Home() {
             <p className="font-body text-ink-muted">No brews yet.</p>
           ) : (
             <table className="w-full font-body text-sm text-ink">
+              <thead>
+                <tr className="border-b border-border text-left">
+                  <th className="pb-2 pr-4 font-semibold">Bean Name</th>
+                  <th className="pb-2 pr-4 font-semibold">Dose (g)</th>
+                  <th className="pb-2 pr-4 font-semibold">Time</th>
+                  <th className="pb-2 pr-4 font-semibold">Grind</th>
+                  <th className="pb-2 pr-4 font-semibold">Comments</th>
+                  <th className="pb-2 pr-4 font-semibold">Date</th>
+                  <th className="pb-2 font-semibold">Actions</th>
+                </tr>
+              </thead>
               <tbody>
                 {brews.map((brew) => (
-                  <tr key={brew.id}>
-                    <td>{brew.bean_name}</td>
+                  <tr key={brew.id} className="border-b border-border">
+                    <td className="py-2 pr-4">{brew.bean_name}</td>
+                    <td className="py-2 pr-4">{brew.grams}</td>
+                    <td className="py-2 pr-4">{brew.brew_time}</td>
+                    <td className="py-2 pr-4">{brew.grind_setting}</td>
+                    <td className="py-2 pr-4">{brew.comments ?? ""}</td>
+                    <td className="py-2 pr-4">{brew.created_at}</td>
+                    <td className="py-2" />
                   </tr>
                 ))}
               </tbody>
