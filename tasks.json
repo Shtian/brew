@@ -176,7 +176,7 @@
       "Verify a confirmation dialog appears",
       "Verify the dialog asks for confirmation before deleting"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",

@@ -38,6 +38,17 @@ export async function updateBrew(
   revalidatePath("/");
 }
 
+export async function deleteBrew(id: string): Promise<void> {
+  if (!process.env.POSTGRES_URL) {
+    throw new Error("POSTGRES_URL is not set");
+  }
+
+  const sql = neon(process.env.POSTGRES_URL);
+  await sql`DELETE FROM brews WHERE id = ${id}`;
+
+  revalidatePath("/");
+}
+
 export async function createBrew(formData: FormData): Promise<void> {
   const beanName = formData.get("bean_name") as string;
   const dose = formData.get("dose") as string;

@@ -1,4 +1,5 @@
 import { getBrews } from "@/lib/db";
+import { DeleteBrewButton } from "./DeleteBrewButton";
 import { EditBrewButton } from "./EditBrewButton";
 import { NewEntryButton } from "./NewEntryButton";
 
@@ -61,7 +62,10 @@ export default async function Home() {
                     <td className="py-2 pr-4">{brew.comments ?? ""}</td>
                     <td className="py-2 pr-4">{formatDate(brew.created_at)}</td>
                     <td className="py-2">
-                      <EditBrewButton brew={brew} />
+                      <div className="flex items-center gap-1">
+                        <EditBrewButton brew={brew} />
+                        <DeleteBrewButton id={brew.id} />
+                      </div>
                     </td>
                   </tr>
                 ))}
