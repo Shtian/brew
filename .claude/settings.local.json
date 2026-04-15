@@ -14,7 +14,8 @@
       "Bash(pnpm add:*)",
       "Bash(npx biome:*)",
       "Bash(npx next:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npm run:*)"
     ]
   }
 }

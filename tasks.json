@@ -113,7 +113,7 @@
       "Verify a 'Comments' textarea is present",
       "Verify a submit button is present"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
