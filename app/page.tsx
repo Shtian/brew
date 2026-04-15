@@ -1,4 +1,5 @@
 import { getBrews } from "@/lib/db";
+import { NewEntryButton } from "./NewEntryButton";
 
 export const dynamic = "force-dynamic";
 
@@ -28,12 +29,7 @@ export default async function Home() {
       <div className="mx-auto max-w-[1200px] px-6 py-8">
         <header className="flex items-center justify-between">
           <h1 className="font-display text-4xl font-bold text-ink">Brew</h1>
-          <button
-            type="button"
-            className="rounded bg-accent px-4 py-2 font-body text-sm font-medium text-parchment hover:bg-accent-dark"
-          >
-            New Entry
-          </button>
+          <NewEntryButton />
         </header>
         <hr className="mt-4 border-border" />
         <main className="mt-8">

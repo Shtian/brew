@@ -99,7 +99,7 @@
       "Verify the dialog title indicates creating a new brew",
       "Verify all form fields are empty"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
