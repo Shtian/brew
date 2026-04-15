@@ -9,7 +9,7 @@
       "Verify id defaults to gen_random_uuid()",
       "Verify created_at defaults to NOW()"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "ui",
