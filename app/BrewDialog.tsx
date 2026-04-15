@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef } from "react";
+import { createBrew } from "./actions";
 
 interface BrewDialogProps {
   open: boolean;
@@ -9,6 +10,15 @@ interface BrewDialogProps {
 
 export function BrewDialog({ open, onClose }: BrewDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const [, action, pending] = useActionState(
+    async (_prevState: null, formData: FormData) => {
+      await createBrew(formData);
+      return null;
+    },
+    null,
+  );
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -29,6 +39,16 @@ export function BrewDialog({ open, onClose }: BrewDialogProps) {
     dialog.addEventListener("close", handleClose);
     return () => dialog.removeEventListener("close", handleClose);
   }, [onClose]);
+
+  // Close dialog and reset form after successful submission (pending goes false)
+  const prevPendingRef = useRef(false);
+  useEffect(() => {
+    if (prevPendingRef.current && !pending) {
+      formRef.current?.reset();
+      onClose();
+    }
+    prevPendingRef.current = pending;
+  }, [pending, onClose]);
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
     if (e.target === dialogRef.current) {
@@ -64,7 +84,7 @@ export function BrewDialog({ open, onClose }: BrewDialogProps) {
           </button>
         </div>
 
-        <form className="space-y-4">
+        <form ref={formRef} action={action} className="space-y-4">
           <div>
             <label
               htmlFor="bean_name"
@@ -153,9 +173,10 @@ export function BrewDialog({ open, onClose }: BrewDialogProps) {
             </button>
             <button
               type="submit"
-              className="rounded bg-accent px-4 py-2 font-body text-sm font-medium text-parchment hover:bg-accent-dark"
+              disabled={pending}
+              className="rounded bg-accent px-4 py-2 font-body text-sm font-medium text-parchment hover:bg-accent-dark disabled:opacity-50"
             >
-              Save
+              {pending ? "Saving…" : "Save"}
             </button>
           </div>
         </form>

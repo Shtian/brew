@@ -129,7 +129,7 @@
       "Verify the dialog closes",
       "Verify the new entry appears at the top of the table with correct values"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
