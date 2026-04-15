@@ -76,7 +76,7 @@
       "Navigate to the app",
       "Verify the time column displays '3:45' for that entry"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",

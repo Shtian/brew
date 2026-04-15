@@ -2,6 +2,12 @@ import { getBrews } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
+function formatBrewTime(seconds: number): string {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
+}
+
 export default async function Home() {
   const brews = await getBrews();
 
@@ -39,7 +45,9 @@ export default async function Home() {
                   <tr key={brew.id} className="border-b border-border">
                     <td className="py-2 pr-4">{brew.bean_name}</td>
                     <td className="py-2 pr-4">{brew.grams}</td>
-                    <td className="py-2 pr-4">{brew.brew_time}</td>
+                    <td className="py-2 pr-4">
+                      {formatBrewTime(brew.brew_time)}
+                    </td>
                     <td className="py-2 pr-4">{brew.grind_setting}</td>
                     <td className="py-2 pr-4">{brew.comments ?? ""}</td>
                     <td className="py-2 pr-4">{brew.created_at}</td>
