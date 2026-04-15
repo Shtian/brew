@@ -165,7 +165,7 @@
       "Verify the table row reflects the updated Bean Name",
       "Verify other fields remain unchanged"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
