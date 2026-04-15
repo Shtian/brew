@@ -8,6 +8,18 @@ function formatBrewTime(seconds: number): string {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 
+function formatDate(value: string | Date): string {
+  const date = typeof value === "string" ? new Date(value) : value;
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  }).format(date);
+}
+
 export default async function Home() {
   const brews = await getBrews();
 
@@ -50,7 +62,7 @@ export default async function Home() {
                     </td>
                     <td className="py-2 pr-4">{brew.grind_setting}</td>
                     <td className="py-2 pr-4">{brew.comments ?? ""}</td>
-                    <td className="py-2 pr-4">{brew.created_at}</td>
+                    <td className="py-2 pr-4">{formatDate(brew.created_at)}</td>
                     <td className="py-2" />
                   </tr>
                 ))}
