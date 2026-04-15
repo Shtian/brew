@@ -1,4 +1,10 @@
-export default function Home() {
+import { getBrews } from "@/lib/db";
+
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const brews = await getBrews();
+
   return (
     <div className="min-h-screen bg-parchment">
       <div className="mx-auto max-w-[1200px] px-6 py-8">
@@ -13,7 +19,19 @@ export default function Home() {
         </header>
         <hr className="mt-4 border-border" />
         <main className="mt-8">
-          <p className="font-body text-ink-muted">No brews yet.</p>
+          {brews.length === 0 ? (
+            <p className="font-body text-ink-muted">No brews yet.</p>
+          ) : (
+            <table className="w-full font-body text-sm text-ink">
+              <tbody>
+                {brews.map((brew) => (
+                  <tr key={brew.id}>
+                    <td>{brew.bean_name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </main>
       </div>
     </div>

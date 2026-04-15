@@ -44,7 +44,7 @@
       "Verify no table rows are rendered",
       "Verify an empty state message is visible"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
