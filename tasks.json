@@ -22,7 +22,7 @@
       "Verify body text uses Inter font",
       "Verify a horizontal divider separates the header from the table"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "ui",
