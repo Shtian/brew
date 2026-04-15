@@ -55,7 +55,7 @@
       "Verify the most recently created brew appears at the top of the table",
       "Verify all entries are present"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "category": "functional",
