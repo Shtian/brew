@@ -5,9 +5,10 @@ import { deleteBrew } from "./actions";
 
 interface DeleteBrewButtonProps {
   id: string;
+  buttonClassName?: string;
 }
 
-export function DeleteBrewButton({ id }: DeleteBrewButtonProps) {
+export function DeleteBrewButton({ id, buttonClassName }: DeleteBrewButtonProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [isPending, startTransition] = useTransition();
 
@@ -37,7 +38,7 @@ export function DeleteBrewButton({ id }: DeleteBrewButtonProps) {
       <button
         type="button"
         onClick={openDialog}
-        className="rounded p-1 text-ink-muted hover:text-ink"
+        className={`rounded p-1 ${buttonClassName ?? "text-ink-muted hover:text-ink"}`}
         aria-label="Delete brew"
       >
         <svg
@@ -66,7 +67,7 @@ export function DeleteBrewButton({ id }: DeleteBrewButtonProps) {
         onKeyDown={(e) => {
           if (e.key === "Escape") closeDialog();
         }}
-        className="m-auto w-full max-w-sm rounded-lg bg-parchment p-0 shadow-xl backdrop:bg-ink/40"
+        className="m-auto w-full max-w-sm rounded-lg bg-parchment p-0 shadow-xl backdrop:bg-black/60"
       >
         <div className="p-6">
           <h2 className="mb-2 font-display text-xl font-bold text-ink">

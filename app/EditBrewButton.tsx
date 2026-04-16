@@ -6,9 +6,10 @@ import { BrewDialog } from "./BrewDialog";
 
 interface EditBrewButtonProps {
   brew: Brew;
+  buttonClassName?: string;
 }
 
-export function EditBrewButton({ brew }: EditBrewButtonProps) {
+export function EditBrewButton({ brew, buttonClassName }: EditBrewButtonProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -16,7 +17,7 @@ export function EditBrewButton({ brew }: EditBrewButtonProps) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="rounded p-1 text-ink-muted hover:text-ink"
+        className={`rounded p-1 ${buttonClassName ?? "text-ink-muted hover:text-ink"}`}
         aria-label="Edit brew"
       >
         <svg
