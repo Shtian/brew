@@ -87,13 +87,13 @@ export function BrewDialog({ open, onClose, brew }: BrewDialogProps) {
       <div className="p-6">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="font-display text-2xl font-bold text-ink">
-            {isEditing ? "Edit Brew Entry" : "New Brew Entry"}
+            {isEditing ? "Rediger bryggoppføring" : "Ny bryggoppføring"}
           </h2>
           <button
             type="button"
             onClick={onClose}
             className="rounded p-1 font-body text-ink-muted hover:text-ink"
-            aria-label="Close dialog"
+            aria-label="Lukk dialog"
           >
             ✕
           </button>
@@ -105,7 +105,7 @@ export function BrewDialog({ open, onClose, brew }: BrewDialogProps) {
               htmlFor="bean_name"
               className="mb-1 block font-body text-sm font-medium text-ink"
             >
-              Bean Name
+              Bønnenavn
             </label>
             <input
               ref={firstInputRef}
@@ -138,7 +138,7 @@ export function BrewDialog({ open, onClose, brew }: BrewDialogProps) {
               htmlFor="brew_time"
               className="mb-1 block font-body text-sm font-medium text-ink"
             >
-              Brew Time
+              Bryggingstid
             </label>
             <input
               id="brew_time"
@@ -157,7 +157,7 @@ export function BrewDialog({ open, onClose, brew }: BrewDialogProps) {
               htmlFor="grind_setting"
               className="mb-1 block font-body text-sm font-medium text-ink"
             >
-              Grind Setting
+              Malingsgrad
             </label>
             <input
               id="grind_setting"
@@ -175,7 +175,7 @@ export function BrewDialog({ open, onClose, brew }: BrewDialogProps) {
               htmlFor="comments"
               className="mb-1 block font-body text-sm font-medium text-ink"
             >
-              Comments
+              Kommentarer
             </label>
             <textarea
               id="comments"
@@ -192,14 +192,14 @@ export function BrewDialog({ open, onClose, brew }: BrewDialogProps) {
               onClick={onClose}
               className="rounded border border-border px-4 py-2 font-body text-sm font-medium text-ink hover:bg-parchment-dark"
             >
-              Cancel
+              Avbryt
             </button>
             <button
               type="submit"
               disabled={pending}
               className="rounded bg-accent px-4 py-2 font-body text-sm font-medium text-parchment hover:bg-accent-dark disabled:opacity-50"
             >
-              {pending ? "Saving…" : "Save"}
+              {pending ? "Lagrer…" : "Lagre"}
             </button>
           </div>
         </form>

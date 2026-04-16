@@ -39,7 +39,7 @@ export function DeleteBrewButton({ id, buttonClassName }: DeleteBrewButtonProps)
         type="button"
         onClick={openDialog}
         className={`rounded p-1 ${buttonClassName ?? "text-ink-muted hover:text-ink"}`}
-        aria-label="Delete brew"
+        aria-label="Slett brygg"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -71,11 +71,10 @@ export function DeleteBrewButton({ id, buttonClassName }: DeleteBrewButtonProps)
       >
         <div className="p-6">
           <h2 className="mb-2 font-display text-xl font-bold text-ink">
-            Delete Brew Entry
+            Slett bryggoppføring
           </h2>
           <p className="mb-6 font-body text-sm text-ink-muted">
-            Are you sure you want to delete this brew entry? This action cannot
-            be undone.
+            Er du sikker på at du vil slette denne bryggoppføringen? Denne handlingen kan ikke angres.
           </p>
           <div className="flex justify-end gap-3">
             <button
@@ -83,7 +82,7 @@ export function DeleteBrewButton({ id, buttonClassName }: DeleteBrewButtonProps)
               onClick={closeDialog}
               className="rounded border border-border px-4 py-2 font-body text-sm font-medium text-ink hover:bg-parchment-dark"
             >
-              Cancel
+              Avbryt
             </button>
             <button
               type="button"
@@ -91,7 +90,7 @@ export function DeleteBrewButton({ id, buttonClassName }: DeleteBrewButtonProps)
               disabled={isPending}
               className="rounded bg-red-700 px-4 py-2 font-body text-sm font-medium text-parchment hover:bg-red-800 disabled:opacity-50"
             >
-              {isPending ? "Deleting…" : "Delete"}
+              {isPending ? "Sletter…" : "Slett"}
             </button>
           </div>
         </div>

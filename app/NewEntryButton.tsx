@@ -13,7 +13,7 @@ export function NewEntryButton() {
         onClick={() => setOpen(true)}
         className="rounded bg-accent px-4 py-2 font-body text-sm font-medium text-parchment hover:bg-accent-dark"
       >
-        New Entry
+        Ny oppføring
       </button>
       <BrewDialog open={open} onClose={() => setOpen(false)} />
     </>

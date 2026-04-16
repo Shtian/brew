@@ -45,7 +45,7 @@ export default async function Home() {
         <hr className="mt-4 border-border" />
         <main className="mt-8">
           {brews.length === 0 ? (
-            <p className="font-body text-ink-muted">No brews yet.</p>
+            <p className="font-body text-ink-muted">Ingen brygg ennå.</p>
           ) : (
             <>
               {/* Mobile card view */}
@@ -59,7 +59,7 @@ export default async function Home() {
                     <div className="px-5 pb-4 pt-5">
                       <div className="flex items-start justify-between">
                         <p className="font-body text-xs font-bold uppercase tracking-widest text-ink opacity-50">
-                          Specimen No.{" "}
+                          Eksemplar nr.{" "}
                           {String(brews.length - index).padStart(3, "0")}
                         </p>
                         <div className="-mr-1 ml-2 flex shrink-0 items-center gap-1">
@@ -82,7 +82,7 @@ export default async function Home() {
                     <div className="border-t border-white/10 px-5">
                       <div className="flex items-center justify-between border-b border-white/10 py-3">
                         <span className="font-body text-xs font-bold uppercase tracking-widest text-ink opacity-50">
-                          Grind Setting
+                          Malingsgrad
                         </span>
                         <span className="font-body text-sm font-bold text-ink">
                           {brew.grind_setting}
@@ -90,7 +90,7 @@ export default async function Home() {
                       </div>
                       <div className="flex items-center justify-between border-b border-white/10 py-3">
                         <span className="font-body text-xs font-bold uppercase tracking-widest text-ink opacity-50">
-                          Coffee Weight
+                          Kaffevekt
                         </span>
                         <span className="font-body text-sm font-bold text-ink">
                           {brew.grams}g
@@ -98,7 +98,7 @@ export default async function Home() {
                       </div>
                       <div className="flex items-center justify-between border-b border-white/10 py-3">
                         <span className="font-body text-xs font-bold uppercase tracking-widest text-ink opacity-50">
-                          Brew Time
+                          Bryggingstid
                         </span>
                         <span className="font-body text-sm font-bold text-ink">
                           {formatBrewTime(brew.brew_time)}
@@ -108,7 +108,7 @@ export default async function Home() {
                         className={`flex items-center justify-between py-3 ${brew.comments ? "border-b border-white/10" : ""}`}
                       >
                         <span className="font-body text-xs font-bold uppercase tracking-widest text-ink opacity-50">
-                          Date & Time
+                          Tidspunkt
                         </span>
                         <span className="font-body text-sm font-bold text-ink">
                           {formatDateShort(brew.created_at)}
@@ -120,7 +120,7 @@ export default async function Home() {
                     {brew.comments && (
                       <div className="brew-observations relative m-4 rounded-md bg-white/10 p-4">
                         <p className="font-body text-xs font-bold uppercase tracking-widest text-ink opacity-50">
-                          Observations
+                          Observasjoner
                         </p>
                         <p className="mt-2 font-display text-sm italic text-ink opacity-80">
                           &#8220;{brew.comments}&#8221;
@@ -135,13 +135,13 @@ export default async function Home() {
               <table className="hidden w-full font-body text-sm text-ink md:table border rounded-md border-accent-dark/30">
                 <thead>
                   <tr className="border-b border-border text-left bg-parchment-dark">
-                    <th className="p-2 font-semibold">Bean Name</th>
+                    <th className="p-2 font-semibold">Bønnenavn</th>
                     <th className="p-2 font-semibold">Dose (g)</th>
-                    <th className="p-2 font-semibold">Time</th>
-                    <th className="p-2 font-semibold">Grind</th>
-                    <th className="p-2 font-semibold">Comments</th>
-                    <th className="p-2 font-semibold">Date</th>
-                    <th className="py-2 font-semibold">Actions</th>
+                    <th className="p-2 font-semibold">Tid</th>
+                    <th className="p-2 font-semibold">Malingsgrad</th>
+                    <th className="p-2 font-semibold">Kommentarer</th>
+                    <th className="p-2 font-semibold">Dato</th>
+                    <th className="py-2 font-semibold">Handlinger</th>
                   </tr>
                 </thead>
                 <tbody>

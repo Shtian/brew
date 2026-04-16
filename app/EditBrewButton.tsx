@@ -18,7 +18,7 @@ export function EditBrewButton({ brew, buttonClassName }: EditBrewButtonProps) {
         type="button"
         onClick={() => setOpen(true)}
         className={`rounded p-1 ${buttonClassName ?? "text-ink-muted hover:text-ink"}`}
-        aria-label="Edit brew"
+        aria-label="Rediger brygg"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

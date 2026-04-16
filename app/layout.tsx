@@ -14,7 +14,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Brew",
-  description: "Pour over coffee tracker",
+  description: "Sporing av pour over-kaffe",
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="nb"
       className={`${playfair.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
