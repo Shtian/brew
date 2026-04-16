@@ -28,7 +28,7 @@ export default function RootLayout({
       lang="nb"
       className={`${playfair.variable} ${inter.variable} h-full antialiased bg-parchment`}
     >
-      <body className="min-h-full">
+      <body className="min-h-full pb-52">
         <Frond
           aria-hidden="true"
           className="text-heading/75 rotate-45 fixed -bottom-24 -left-48 size-128 pointer-events-none select-none"
