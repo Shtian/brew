@@ -38,41 +38,103 @@ export default async function Home() {
           {brews.length === 0 ? (
             <p className="font-body text-ink-muted">No brews yet.</p>
           ) : (
-            <div className="overflow-x-auto">
-            <table className="w-full font-body text-sm text-ink">
-              <thead>
-                <tr className="border-b border-border text-left">
-                  <th className="pb-2 pr-4 font-semibold">Bean Name</th>
-                  <th className="pb-2 pr-4 font-semibold">Dose (g)</th>
-                  <th className="pb-2 pr-4 font-semibold">Time</th>
-                  <th className="pb-2 pr-4 font-semibold">Grind</th>
-                  <th className="pb-2 pr-4 font-semibold">Comments</th>
-                  <th className="pb-2 pr-4 font-semibold">Date</th>
-                  <th className="pb-2 font-semibold">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
+            <>
+              {/* Mobile card view */}
+              <div className="flex flex-col gap-3 md:hidden">
                 {brews.map((brew) => (
-                  <tr key={brew.id} className="border-b border-border">
-                    <td className="py-2 pr-4">{brew.bean_name}</td>
-                    <td className="py-2 pr-4">{brew.grams}</td>
-                    <td className="py-2 pr-4">
-                      {formatBrewTime(brew.brew_time)}
-                    </td>
-                    <td className="py-2 pr-4">{brew.grind_setting}</td>
-                    <td className="py-2 pr-4">{brew.comments ?? ""}</td>
-                    <td className="py-2 pr-4">{formatDate(brew.created_at)}</td>
-                    <td className="py-2">
-                      <div className="flex items-center gap-1">
+                  <div
+                    key={brew.id}
+                    className="rounded-lg border border-border bg-parchment-dark p-4"
+                  >
+                    <div className="flex items-start justify-between">
+                      <h2 className="font-display text-lg font-bold text-ink">
+                        {brew.bean_name}
+                      </h2>
+                      <div className="ml-2 flex shrink-0 items-center gap-1">
                         <EditBrewButton brew={brew} />
                         <DeleteBrewButton id={brew.id} />
                       </div>
-                    </td>
-                  </tr>
+                    </div>
+                    <div className="mt-3 grid grid-cols-3 gap-3">
+                      <div>
+                        <p className="font-body text-xs text-ink-muted">
+                          Dose
+                        </p>
+                        <p className="font-body text-sm text-ink">
+                          {brew.grams} g
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-body text-xs text-ink-muted">
+                          Time
+                        </p>
+                        <p className="font-body text-sm text-ink">
+                          {formatBrewTime(brew.brew_time)}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-body text-xs text-ink-muted">
+                          Grind
+                        </p>
+                        <p className="font-body text-sm text-ink">
+                          {brew.grind_setting}
+                        </p>
+                      </div>
+                    </div>
+                    {brew.comments && (
+                      <div className="mt-3">
+                        <p className="font-body text-xs text-ink-muted">
+                          Comments
+                        </p>
+                        <p className="font-body text-sm text-ink">
+                          {brew.comments}
+                        </p>
+                      </div>
+                    )}
+                    <p className="mt-3 font-body text-xs text-ink-muted">
+                      {formatDate(brew.created_at)}
+                    </p>
+                  </div>
                 ))}
-              </tbody>
-            </table>
-            </div>
+              </div>
+
+              {/* Desktop table view */}
+              <table className="hidden w-full font-body text-sm text-ink md:table">
+                <thead>
+                  <tr className="border-b border-border text-left">
+                    <th className="pb-2 pr-4 font-semibold">Bean Name</th>
+                    <th className="pb-2 pr-4 font-semibold">Dose (g)</th>
+                    <th className="pb-2 pr-4 font-semibold">Time</th>
+                    <th className="pb-2 pr-4 font-semibold">Grind</th>
+                    <th className="pb-2 pr-4 font-semibold">Comments</th>
+                    <th className="pb-2 pr-4 font-semibold">Date</th>
+                    <th className="pb-2 font-semibold">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {brews.map((brew) => (
+                    <tr key={brew.id} className="border-b border-border">
+                      <td className="py-2 pr-4">{brew.bean_name}</td>
+                      <td className="py-2 pr-4">{brew.grams}</td>
+                      <td className="py-2 pr-4">
+                        {formatBrewTime(brew.brew_time)}
+                      </td>
+                      <td className="py-2 pr-4">{brew.grind_setting}</td>
+                      <td className="py-2 pr-4">{brew.comments ?? ""}</td>
+                      <td className="py-2 pr-4">
+                        {formatDate(brew.created_at)}
+                      </td>
+                      <td className="py-2">
+                        <div className="flex items-center gap-1">
+                          <EditBrewButton brew={brew} />
+                          <DeleteBrewButton id={brew.id} />
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </>
           )}
         </main>
       </div>
