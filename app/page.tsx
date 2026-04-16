@@ -120,7 +120,7 @@ export default async function Home() {
 
                     {/* Observations */}
                     {brew.comments && (
-                      <div className="m-4 rounded-md bg-white/10 p-4">
+                      <div className="brew-observations relative m-4 rounded-md bg-white/10 p-4">
                         <p className="font-body text-xs font-bold uppercase tracking-widest text-ink opacity-50">
                           Observations
                         </p>

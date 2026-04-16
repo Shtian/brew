@@ -67,7 +67,7 @@ export function DeleteBrewButton({ id, buttonClassName }: DeleteBrewButtonProps)
         onKeyDown={(e) => {
           if (e.key === "Escape") closeDialog();
         }}
-        className="m-auto w-full max-w-sm rounded-lg bg-parchment p-0 shadow-xl backdrop:bg-black/60"
+        className="mx-auto my-auto w-[calc(100%-2rem)] max-w-sm rounded-lg bg-parchment p-0 shadow-xl backdrop:bg-black/60"
       >
         <div className="p-6">
           <h2 className="mb-2 font-display text-xl font-bold text-ink">
