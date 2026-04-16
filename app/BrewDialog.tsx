@@ -82,7 +82,7 @@ export function BrewDialog({ open, onClose, brew }: BrewDialogProps) {
       ref={dialogRef}
       onClick={handleBackdropClick}
       onKeyDown={handleBackdropKeyDown}
-      className="m-auto w-full max-w-lg rounded-lg bg-parchment p-0 shadow-xl backdrop:bg-ink/40"
+      className="m-auto w-full max-w-lg rounded-lg bg-parchment p-0 shadow-xl backdrop:bg-black/60"
     >
       <div className="p-6">
         <div className="mb-6 flex items-center justify-between">

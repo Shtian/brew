@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --parchment: #f2ebd3;
-  --parchment-dark: #e5d9bc;
-  --border-color: #c2b089;
-  --ink: #1c2b19;
-  --ink-muted: #4e6347;
-  --accent: #3d5c37;
-  --accent-dark: #2c4428;
+  --parchment: #26231F;
+  --parchment-dark: #332F2A;
+  --border-color: #4A4540;
+  --ink: #D9C7A7;
+  --ink-muted: #7A7060;
+  --heading: #6C7B50;
+  --accent: #D9C7A7;
+  --accent-dark: #C4B292;
   --danger: #7d2828;
 }
 
@@ -17,6 +18,7 @@
   --color-border: var(--border-color);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
+  --color-heading: var(--heading);
   --color-accent: var(--accent);
   --color-accent-dark: var(--accent-dark);
   --color-danger: var(--danger);
