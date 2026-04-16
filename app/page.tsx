@@ -36,7 +36,7 @@ export default async function Home() {
   const brews = await getBrews();
 
   return (
-    <div className="min-h-screen bg-parchment">
+    <div className="min-h-screen">
       <div className="mx-auto max-w-300 px-6 py-8">
         <header className="flex items-center justify-between">
           <h1 className="font-display text-6xl font-bold text-heading tracking-wide">

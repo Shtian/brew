@@ -26,14 +26,14 @@ export default function RootLayout({
   return (
     <html
       lang="nb"
-      className={`${playfair.variable} ${inter.variable} h-full antialiased`}
+      className={`${playfair.variable} ${inter.variable} h-full antialiased bg-parchment`}
     >
-      <body className="min-h-full relative">
+      <body className="min-h-full">
         <Frond
           aria-hidden="true"
-          className="text-heading rotate-45 fixed -bottom-24 -left-48 size-128 pointer-events-none select-none"
+          className="text-heading/75 rotate-45 fixed -bottom-24 -left-48 size-128 pointer-events-none select-none"
         />
-        {children}
+        <div className="relative min-h-full">{children}</div>
       </body>
     </html>
   );
