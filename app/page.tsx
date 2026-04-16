@@ -39,7 +39,9 @@ export default async function Home() {
     <div className="min-h-screen bg-parchment">
       <div className="mx-auto max-w-300 px-6 py-8">
         <header className="flex items-center justify-between">
-          <h1 className="font-display text-6xl font-bold text-heading tracking-wide">Brew</h1>
+          <h1 className="font-display text-6xl font-bold text-heading tracking-wide">
+            Brew
+          </h1>
           <NewEntryButton />
         </header>
         <hr className="mt-4 border-border" />
@@ -146,8 +148,13 @@ export default async function Home() {
                 </thead>
                 <tbody>
                   {brews.map((brew) => (
-                    <tr key={brew.id} className="border-b border-accent-dark/30">
-                      <td className="pl-2 py-2 pr-4 font-display font-bold text-ink">{brew.bean_name}</td>
+                    <tr
+                      key={brew.id}
+                      className="border-b border-accent-dark/30"
+                    >
+                      <td className="pl-2 py-2 pr-4 font-display font-bold text-ink">
+                        {brew.bean_name}
+                      </td>
                       <td className="pl-2 py-2 pr-4">{brew.grams}</td>
                       <td className="pl-2 py-2 pr-4">
                         {formatBrewTime(brew.brew_time)}

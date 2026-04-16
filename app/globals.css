@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --parchment: #26231F;
-  --parchment-dark: #332F2A;
-  --border-color: #4A4540;
-  --ink: #D9C7A7;
-  --ink-muted: #7A7060;
-  --heading: #6C7B50;
-  --accent: #D9C7A7;
-  --accent-dark: #C4B292;
+  --parchment: #26231f;
+  --parchment-dark: #332f2a;
+  --border-color: #4a4540;
+  --ink: #d9c7a7;
+  --ink-muted: #7a7060;
+  --heading: #6c7b50;
+  --accent: #d9c7a7;
+  --accent-dark: #c4b292;
   --danger: #7d2828;
 }
 
@@ -34,7 +34,7 @@ body {
 }
 
 .brew-observations::after {
-  content: '\201D';
+  content: "\201D";
   position: absolute;
   top: -0.1em;
   right: 0.35rem;

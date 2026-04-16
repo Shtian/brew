@@ -2,13 +2,17 @@
 
 import { useRef, useTransition } from "react";
 import { deleteBrew } from "./actions";
+import { Trash2 } from "lucide-react";
 
 interface DeleteBrewButtonProps {
   id: string;
   buttonClassName?: string;
 }
 
-export function DeleteBrewButton({ id, buttonClassName }: DeleteBrewButtonProps) {
+export function DeleteBrewButton({
+  id,
+  buttonClassName,
+}: DeleteBrewButtonProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [isPending, startTransition] = useTransition();
 
@@ -41,24 +45,7 @@ export function DeleteBrewButton({ id, buttonClassName }: DeleteBrewButtonProps)
         className={`rounded p-1 ${buttonClassName ?? "text-ink-muted hover:text-ink"}`}
         aria-label="Slett brygg"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <polyline points="3 6 5 6 21 6" />
-          <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
-          <path d="M10 11v6" />
-          <path d="M14 11v6" />
-          <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
-        </svg>
+        <Trash2 size={16} aria-hidden="true" />
       </button>
 
       <dialog
@@ -74,7 +61,8 @@ export function DeleteBrewButton({ id, buttonClassName }: DeleteBrewButtonProps)
             Slett bryggoppføring
           </h2>
           <p className="mb-6 font-body text-sm text-ink-muted">
-            Er du sikker på at du vil slette denne bryggoppføringen? Denne handlingen kan ikke angres.
+            Er du sikker på at du vil slette denne bryggoppføringen? Denne
+            handlingen kan ikke angres.
           </p>
           <div className="flex justify-end gap-3">
             <button
