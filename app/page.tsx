@@ -1,6 +1,7 @@
 import { getBrews } from "@/lib/db";
 import { DeleteBrewButton } from "./DeleteBrewButton";
 import { EditBrewButton } from "./EditBrewButton";
+import { LocalDate, LocalDateShort } from "./LocalDate";
 import { NewEntryButton } from "./NewEntryButton";
 
 export const dynamic = "force-dynamic";
@@ -9,27 +10,6 @@ function formatBrewTime(seconds: number): string {
   const mins = Math.floor(seconds / 60);
   const secs = seconds % 60;
   return `${mins}:${secs.toString().padStart(2, "0")}`;
-}
-
-function formatDate(value: string | Date): string {
-  const date = typeof value === "string" ? new Date(value) : value;
-  return new Intl.DateTimeFormat("nb-no", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-  }).format(date);
-}
-
-function formatDateShort(value: string | Date): string {
-  const date = typeof value === "string" ? new Date(value) : value;
-  return new Intl.DateTimeFormat("nb-no", {
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-  }).format(date);
 }
 
 export default async function Home() {
@@ -113,7 +93,7 @@ export default async function Home() {
                           Tidspunkt
                         </span>
                         <span className="font-body text-sm font-bold text-ink">
-                          {formatDateShort(brew.created_at)}
+                          <LocalDateShort value={brew.created_at} />
                         </span>
                       </div>
                     </div>
@@ -162,7 +142,7 @@ export default async function Home() {
                       <td className="pl-2 py-2 pr-4">{brew.grind_setting}</td>
                       <td className="pl-2 py-2 pr-4">{brew.comments ?? ""}</td>
                       <td className="pl-2 py-2 pr-4">
-                        {formatDate(brew.created_at)}
+                        <LocalDate value={brew.created_at} />
                       </td>
                       <td className="py-2">
                         <div className="flex items-center gap-1">
