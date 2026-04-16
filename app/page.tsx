@@ -38,6 +38,7 @@ export default async function Home() {
           {brews.length === 0 ? (
             <p className="font-body text-ink-muted">No brews yet.</p>
           ) : (
+            <div className="overflow-x-auto">
             <table className="w-full font-body text-sm text-ink">
               <thead>
                 <tr className="border-b border-border text-left">
@@ -71,6 +72,7 @@ export default async function Home() {
                 ))}
               </tbody>
             </table>
+            </div>
           )}
         </main>
       </div>
