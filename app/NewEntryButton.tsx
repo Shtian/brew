@@ -11,7 +11,7 @@ export function NewEntryButton() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="rounded bg-accent px-4 py-2 font-body text-sm font-medium text-parchment hover:bg-accent-dark"
+        className="fixed bottom-4 right-4 md:static rounded bg-accent px-4 py-2 font-body text-sm font-medium text-parchment hover:bg-accent-dark"
       >
         Ny oppføring
       </button>

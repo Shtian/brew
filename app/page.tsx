@@ -37,9 +37,9 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-parchment">
-      <div className="mx-auto max-w-[1200px] px-6 py-8">
+      <div className="mx-auto max-w-300 px-6 py-8">
         <header className="flex items-center justify-between">
-          <h1 className="font-display text-4xl font-bold text-heading">Brew</h1>
+          <h1 className="font-display text-6xl font-bold text-heading tracking-wide">Brew</h1>
           <NewEntryButton />
         </header>
         <hr className="mt-4 border-border" />
