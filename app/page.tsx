@@ -13,24 +13,22 @@ function formatBrewTime(seconds: number): string {
 
 function formatDate(value: string | Date): string {
   const date = typeof value === "string" ? new Date(value) : value;
-  return new Intl.DateTimeFormat("en-US", {
+  return new Intl.DateTimeFormat("nb-no", {
     month: "short",
     day: "numeric",
     year: "numeric",
     hour: "numeric",
     minute: "2-digit",
-    hour12: true,
   }).format(date);
 }
 
 function formatDateShort(value: string | Date): string {
   const date = typeof value === "string" ? new Date(value) : value;
-  return new Intl.DateTimeFormat("en-US", {
+  return new Intl.DateTimeFormat("nb-no", {
     month: "short",
     day: "numeric",
     hour: "numeric",
     minute: "2-digit",
-    hour12: true,
   }).format(date);
 }
 
@@ -134,29 +132,29 @@ export default async function Home() {
               </div>
 
               {/* Desktop table view */}
-              <table className="hidden w-full font-body text-sm text-ink md:table">
+              <table className="hidden w-full font-body text-sm text-ink md:table border rounded-md border-accent-dark/30">
                 <thead>
-                  <tr className="border-b border-border text-left">
-                    <th className="pb-2 pr-4 font-semibold">Bean Name</th>
-                    <th className="pb-2 pr-4 font-semibold">Dose (g)</th>
-                    <th className="pb-2 pr-4 font-semibold">Time</th>
-                    <th className="pb-2 pr-4 font-semibold">Grind</th>
-                    <th className="pb-2 pr-4 font-semibold">Comments</th>
-                    <th className="pb-2 pr-4 font-semibold">Date</th>
-                    <th className="pb-2 font-semibold">Actions</th>
+                  <tr className="border-b border-border text-left bg-parchment-dark">
+                    <th className="p-2 font-semibold">Bean Name</th>
+                    <th className="p-2 font-semibold">Dose (g)</th>
+                    <th className="p-2 font-semibold">Time</th>
+                    <th className="p-2 font-semibold">Grind</th>
+                    <th className="p-2 font-semibold">Comments</th>
+                    <th className="p-2 font-semibold">Date</th>
+                    <th className="py-2 font-semibold">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {brews.map((brew) => (
-                    <tr key={brew.id} className="border-b border-border">
-                      <td className="py-2 pr-4">{brew.bean_name}</td>
-                      <td className="py-2 pr-4">{brew.grams}</td>
-                      <td className="py-2 pr-4">
+                    <tr key={brew.id} className="border-b border-accent-dark/30">
+                      <td className="pl-2 py-2 pr-4 font-display font-bold text-ink">{brew.bean_name}</td>
+                      <td className="pl-2 py-2 pr-4">{brew.grams}</td>
+                      <td className="pl-2 py-2 pr-4">
                         {formatBrewTime(brew.brew_time)}
                       </td>
-                      <td className="py-2 pr-4">{brew.grind_setting}</td>
-                      <td className="py-2 pr-4">{brew.comments ?? ""}</td>
-                      <td className="py-2 pr-4">
+                      <td className="pl-2 py-2 pr-4">{brew.grind_setting}</td>
+                      <td className="pl-2 py-2 pr-4">{brew.comments ?? ""}</td>
+                      <td className="pl-2 py-2 pr-4">
                         {formatDate(brew.created_at)}
                       </td>
                       <td className="py-2">
