@@ -1,4 +1,5 @@
 import { getBrews } from "@/lib/db";
+import { ActivityTimeline } from "./ActivityTimeline";
 import { DeleteBrewButton } from "./DeleteBrewButton";
 import { EditBrewButton } from "./EditBrewButton";
 import { LocalDate, LocalDateShort } from "./LocalDate";
@@ -26,6 +27,7 @@ export default async function Home() {
         </header>
         <hr className="mt-4 border-border" />
         <main className="mt-8">
+          <ActivityTimeline brews={brews} />
           {brews.length === 0 ? (
             <p className="font-body text-ink-muted">Ingen brygg ennå.</p>
           ) : (
